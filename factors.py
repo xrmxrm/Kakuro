@@ -4,8 +4,15 @@ a sum of unique digits between 1 and 9 inclusive.
 """
 from itertools import combinations
 
+# A word is a sequence of distinct digits, corresponding to a 
+# terminated row of boxes in Kakuro. max_word is the maximum
+# length of such a word.
 max_word = 9
+
+# digits = [1, 2, . . ., max_word]
 digits = list(range(1, max_word + 1))
+
+# for max_word = 9, max_sum = 45
 max_sum = sum(digits)
 
 def get_combos(desired_sum, length_of_word):
@@ -21,7 +28,10 @@ def get_combos(desired_sum, length_of_word):
     """
 
     combos = []
+    
+    # Elements of combs are tuples of digits of length length_of_word.
     combs = combinations(digits,length_of_word)
+    
     for c in combs:
         if sum(c) == desired_sum:
             combos.append(c)
@@ -40,7 +50,6 @@ def list_all():
             
 
 if __name__ == '__main__':
-    """    
     print('\nExpect:\n[(7, 8, 9)]\n')
     print('Result:\n', get_combos(24, 3), sep='')
 
@@ -49,7 +58,6 @@ if __name__ == '__main__':
 
     print('\nExpect:\n[]\n')
     print('Result:\n', get_combos(45, 4), sep='')
-    """
 
     list_all()
 
